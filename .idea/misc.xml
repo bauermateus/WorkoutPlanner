@@ -10,6 +10,9 @@
         <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/drawable/ic_baseline_table_view_24.xml" value="0.14" />
         <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/drawable/ic_halter.xml" value="0.14" />
         <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/layout/fragment_calculate.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/layout/fragment_profile.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/Mateus Bauer/AndroidStudioProjects/WorkoutPlanner/app/src/main/res/layout/fragment_workout.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>

@@ -52,4 +52,5 @@ dependencies {
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation ("androidx.navigation:navigation-testing:2.5.3")
 }

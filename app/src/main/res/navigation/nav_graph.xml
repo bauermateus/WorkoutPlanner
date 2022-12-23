@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/workoutFragment">
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="com.mbs.workoutplanner.WorkoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mbs.workoutplanner.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/calculateFragment"
+        android:name="com.mbs.workoutplanner.CalculateFragment"
+        android:label="fragment_calculate"
+        tools:layout="@layout/fragment_calculate" />
+    <action android:id="@+id/action_global_calculateFragment" app:destination="@id/calculateFragment" /><action android:id="@+id/action_global_workoutFragment" app:destination="@id/workoutFragment"/><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
+</navigation>
