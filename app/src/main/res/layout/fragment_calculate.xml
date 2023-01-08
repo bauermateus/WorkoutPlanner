@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalculateFragment">
+    tools:context=".CalculateFragment"
+    style="@style/secondary_background">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        style="@style/secondary_text_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="CALCULATE!!!"

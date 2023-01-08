@@ -12,8 +12,8 @@ class WorkoutFragment : Fragment() {
 
     private var _binding: FragmentWorkoutBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: WorkoutViewModel by activityViewModels {
-        WorkoutViewModel.Factory(WorkoutRepository)
+    private val viewModel: MainViewModel by activityViewModels {
+        MainViewModel.Factory(WorkoutRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +23,14 @@ class WorkoutFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         _binding = FragmentWorkoutBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     override fun onDestroyView() {

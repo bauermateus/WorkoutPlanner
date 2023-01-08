@@ -19,5 +19,4 @@
         android:name="com.mbs.workoutplanner.CalculateFragment"
         android:label="fragment_calculate"
         tools:layout="@layout/fragment_calculate" />
-    <action android:id="@+id/action_global_calculateFragment" app:destination="@id/calculateFragment" /><action android:id="@+id/action_global_workoutFragment" app:destination="@id/workoutFragment"/><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
 </navigation>

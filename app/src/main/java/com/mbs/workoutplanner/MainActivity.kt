@@ -1,29 +1,27 @@
 package com.mbs.workoutplanner
 
+import android.app.StatusBarManager
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.mbs.workoutplanner.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: WorkoutViewModel by viewModels {
-        WorkoutViewModel.Factory(WorkoutRepository)
+    private val viewModel: MainViewModel by viewModels {
+        MainViewModel.Factory(WorkoutRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.workoutButton.setOnClickListener {
-            findNavController(R.id.fragmentContainerView).navigate(R.id.action_global_workoutFragment)
-        }
-        binding.calculateButton.setOnClickListener {
-            findNavController(R.id.fragmentContainerView).navigate(R.id.action_global_calculateFragment)
-        }
-        binding.profileButton.setOnClickListener {
-            findNavController(R.id.fragmentContainerView).navigate(R.id.action_global_profileFragment)
-        }
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        val bottomNavigationView = binding.bottomNavegationView
+        bottomNavigationView.setupWithNavController(navController)
     }
 }
