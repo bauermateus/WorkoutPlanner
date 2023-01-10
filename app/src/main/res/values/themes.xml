@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Base application theme. -->
     <style name="Theme.WorkoutPlanner" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Primary brand color. -->
@@ -19,6 +19,9 @@
     </style>
     <style name="secondary_background">
         <item name="android:background">@color/light_grey</item>
+    </style>
+    <style name="icon_profile_color">
+        <item name="color">@color/white</item>
     </style>
     <style name="secondary_text_color">
         <item name="android:textColor">@color/black</item>

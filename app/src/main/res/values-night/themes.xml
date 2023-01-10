@@ -22,6 +22,10 @@
         <item name="android:background">@color/very_dark_grey</item>
     </style>
 
+    <style name="icon_profile_color">
+        <item name="android:backgroundTint">@color/light_grey</item>
+    </style>
+
     <style name="secondary_text_color">
         <item name="android:textColor">@color/white</item>
     </style>
