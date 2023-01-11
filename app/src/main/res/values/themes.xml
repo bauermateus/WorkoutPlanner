@@ -26,6 +26,15 @@
     <style name="secondary_text_color">
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="profile_background_tint_linear_layout">
+        <item name="android:backgroundTint">@color/light_grey</item>
+    </style>
+    <style name="white_black_daynight">
+        <item name="background">@color/white</item>
+    </style>
+    <style name="grey_black_style">
+        <item name="android:backgroundTint">@color/grey</item>
+    </style>
 
 
     

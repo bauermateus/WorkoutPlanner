@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/white_black_daynight"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ProfileFragment">
 
     <ImageView
@@ -18,13 +18,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mateus"
+        android:textSize="24dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/top_profile_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
     <LinearLayout
+        android:id="@+id/linearLayout"
+        android:background="@drawable/linear_layout_background_profile"
+        style="@style/profile_background_tint_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="24dp"
         android:layout_marginTop="280dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/secondary_background_corner"
         android:elevation="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,17 +62,99 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_profile_background"
+                style="@style/grey_black_style"
+                android:elevation="5dp"
+                android:orientation="vertical"
+                android:paddingVertical="8dp">
 
                 <ImageButton
-                    android:id="@+id/imageButton"
-                    app:tint="@color/very_dark_grey"
-                    android:layout_width="match_parent"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:contentDescription="settings"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    app:tint="@color/light_blue" />
+
+                <TextView
+                    style="@style/secondary_text_color"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_settings"
-                    android:contentDescription="settings" />
+                    android:layout_gravity="center"
+                    android:text="Editar perfil"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_profile_background"
+                style="@style/grey_black_style"
+                android:elevation="5dp"
+                android:orientation="vertical"
+                android:paddingVertical="8dp">
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:contentDescription="settings"
+                    android:src="@drawable/ic_baseline_notifications"
+                    app:tint="@color/light_blue" />
+
+                <TextView
+                    style="@style/secondary_text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Notificações"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_profile_background"
+                style="@style/grey_black_style"
+                android:elevation="5dp"
+                android:orientation="vertical"
+                android:paddingVertical="8dp">
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@color/transparent"
+                    android:contentDescription="settings"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:tint="@color/light_blue" />
+
+                <TextView
+                    style="@style/secondary_text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Configurações"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

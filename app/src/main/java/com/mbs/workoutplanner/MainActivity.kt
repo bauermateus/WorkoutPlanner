@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupBottomNavegationWithController()
+    }
+
+    private fun setupBottomNavegationWithController() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
         val navController = navHostFragment.navController
