@@ -38,5 +38,8 @@
     <style name="grey_black_style">
         <item name="android:backgroundTint">@color/black</item>
     </style>
+    <style name="background_viewline">
+        <item name="android:background">@color/white</item>
+    </style>
 
 </resources>
