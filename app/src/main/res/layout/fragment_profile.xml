@@ -5,7 +5,7 @@
     style="@style/white_black_daynight"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".view.ProfileFragment">
 
     <ImageView
         android:id="@+id/top_profile_background"
@@ -18,12 +18,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/profile"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/ic_profile_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,266 +30,271 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mateus"
-        android:textSize="24dp"
         android:layout_marginTop="8dp"
+        android:text="Mateus"
         android:textColor="@color/white"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/top_profile_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:background="@drawable/linear_layout_background_profile"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/center_view"
         style="@style/profile_background_tint_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="24dp"
         android:layout_marginTop="240dp"
         android:layout_marginEnd="24dp"
+        android:background="@drawable/linear_layout_background_profile"
         android:elevation="10dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/edit_profile_card_view"
+            style="@style/grey_black_style"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/center_view">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_profile_background"
-                style="@style/grey_black_style"
-                android:elevation="5dp"
-                android:orientation="vertical"
-                android:paddingVertical="8dp">
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@color/transparent"
+                android:contentDescription="settings"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:tint="@color/light_blue" />
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:contentDescription="settings"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/light_blue" />
+        </androidx.cardview.widget.CardView>
 
-                <TextView
-                    style="@style/secondary_text_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Editar perfil"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_profile_background"
-                style="@style/grey_black_style"
-                android:elevation="5dp"
-                android:orientation="vertical"
-                android:paddingVertical="8dp">
-
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:contentDescription="settings"
-                    android:src="@drawable/ic_baseline_notifications"
-                    app:tint="@color/light_blue" />
-
-                <TextView
-                    style="@style/secondary_text_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Notificações"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/button_profile_background"
-                style="@style/grey_black_style"
-                android:elevation="5dp"
-                android:orientation="vertical"
-                android:paddingVertical="8dp">
-
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:background="@color/transparent"
-                    android:contentDescription="settings"
-                    android:src="@drawable/ic_baseline_settings_24"
-                    app:tint="@color/light_blue" />
-
-                <TextView
-                    style="@style/secondary_text_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Configurações"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            style="@style/grey_black_style"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/cardView5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/edit_profile_card_view"
+            app:layout_constraintTop_toTopOf="@+id/center_view">
 
-            <TextView
-                android:textColor="@color/light_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Modalidade:"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Musculação"
-                android:textSize="20sp" />
-        </LinearLayout>
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@color/transparent"
+                android:contentDescription="settings"
+                android:src="@drawable/ic_baseline_notifications"
+                app:tint="@color/light_blue" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            style="@style/grey_black_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintTop_toTopOf="@+id/center_view">
+
+            <ImageButton
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@color/transparent"
+                android:contentDescription="settings"
+                android:src="@drawable/ic_baseline_settings_24"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="@+id/center_view"
+                app:tint="@color/light_blue" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/modalidade"
+            android:textColor="@color/light_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Modalidade:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/edit_profile_card_view"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Musculação"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/modalidade"
+            app:layout_constraintStart_toEndOf="@id/modalidade"/>
         <View
+            android:id="@+id/first_viewline"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             style="@style/background_viewline"
             android:elevation="10dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/modalidade"/>
 
-            <TextView
-                android:textColor="@color/light_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Altura:"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="174"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="m"
-                android:textSize="20sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/altura"
+            android:textColor="@color/light_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Altura:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/first_viewline"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/altura_number"
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="174"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/altura"
+            app:layout_constraintStart_toEndOf="@id/altura"/>
+        <TextView
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/altura_number"
+            app:layout_constraintTop_toTopOf="@id/altura_number"/>
         <View
+            android:id="@+id/second_viewline"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             style="@style/background_viewline"
             android:elevation="10dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/altura"/>
 
-            <TextView
-                android:textColor="@color/light_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Peso:"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="73"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="kg"
-                android:textSize="20sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/peso"
+            android:textColor="@color/light_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Peso:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/second_viewline"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/peso_number"
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="73"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/peso"
+            app:layout_constraintStart_toEndOf="@id/peso"/>
+        <TextView
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/peso_number"
+            app:layout_constraintTop_toTopOf="@id/peso_number"/>
         <View
+            android:id="@+id/third_viewline"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             style="@style/background_viewline"
             android:elevation="10dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/peso"/>
+        <TextView
+            android:id="@+id/bf"
+            android:textColor="@color/light_blue"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:textColor="@color/light_blue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Percentual de gordura"
-                android:textStyle="bold"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="12"
-                android:textSize="20sp" />
-            <TextView
-                style="@style/secondary_text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="%"
-                android:textSize="20sp"/>
-        </LinearLayout>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Percentual de gordura:"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/third_viewline"
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/bf_number"
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="12"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/bf"
+            app:layout_constraintStart_toEndOf="@id/bf"/>
+        <TextView
+            style="@style/secondary_text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@id/bf_number"
+            app:layout_constraintTop_toTopOf="@id/bf_number"/>
         <View
+            android:id="@+id/fourth_viewline"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             style="@style/background_viewline"
             android:elevation="10dp"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"/>
+            android:layout_marginVertical="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bf"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -299,9 +303,14 @@
             android:layout_marginTop="16dp"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:background="@color/dark_blue"
-            android:padding="4dp"/>
+            android:background="@drawable/button_profile_background"
+            android:backgroundTint="@color/dark_blue"
+            android:padding="8dp"
+            android:elevation="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/fourth_viewline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

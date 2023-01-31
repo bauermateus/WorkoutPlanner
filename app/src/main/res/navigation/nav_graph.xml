@@ -6,17 +6,26 @@
     app:startDestination="@id/workoutFragment">
     <fragment
         android:id="@+id/workoutFragment"
-        android:name="com.mbs.workoutplanner.WorkoutFragment"
+        android:name="com.mbs.workoutplanner.view.WorkoutFragment"
         android:label="fragment_workout"
-        tools:layout="@layout/fragment_workout" />
+        tools:layout="@layout/fragment_workout" >
+        <action
+            android:id="@+id/action_workoutFragment_to_workoutCreationFragment"
+            app:destination="@id/workoutCreationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.mbs.workoutplanner.ProfileFragment"
+        android:name="com.mbs.workoutplanner.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/calculateFragment"
-        android:name="com.mbs.workoutplanner.CalculateFragment"
+        android:name="com.mbs.workoutplanner.view.CalculateFragment"
         android:label="fragment_calculate"
         tools:layout="@layout/fragment_calculate" />
+    <fragment
+        android:id="@+id/workoutCreationFragment"
+        android:name="com.mbs.workoutplanner.WorkoutCreationFragment"
+        android:label="fragment_workout_creation"
+        tools:layout="@layout/fragment_workout_creation" />
 </navigation>

@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalculateFragment"
-    style="@style/secondary_background">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        style="@style/secondary_text_color"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="CALCULATE!!!"
-        android:gravity="center"
-        android:textSize="30sp"/>
-
-</FrameLayout>
+    tools:context=".view.CalculateFragment"
+    style="@style/secondary_background"/>
