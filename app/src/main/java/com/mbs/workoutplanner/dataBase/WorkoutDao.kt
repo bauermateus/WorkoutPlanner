@@ -10,5 +10,5 @@ interface WorkoutDao {
     suspend fun fetchAllWorkouts(): List<WorkoutEntity>
 
     @Insert
-    suspend fun insertWorkout(workoutItem: WorkoutModel)
+    suspend fun insertWorkout(workoutItem: WorkoutEntity)
 }
