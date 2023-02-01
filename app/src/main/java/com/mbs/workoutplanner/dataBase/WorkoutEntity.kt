@@ -13,6 +13,4 @@ data class WorkoutEntity (
 
     val numberOfExercise: Int,
 
-    val isCompleted: Boolean
-
 )

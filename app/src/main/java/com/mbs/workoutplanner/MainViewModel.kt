@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.mbs.workoutplanner.dataBase.WorkoutEntity
 import com.mbs.workoutplanner.models.WorkoutModel
 import com.mbs.workoutplanner.repository.WorkoutRepository
 import kotlinx.coroutines.*
@@ -19,6 +20,11 @@ class MainViewModel(private val repository: WorkoutRepository) : ViewModel() {
             withContext(Dispatchers.Main) {
                  _workoutsList.value = workouts
             }
+        }
+    }
+    fun insertWorkout(workout: WorkoutEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+        repository.insertWorkout(workout)
         }
     }
 

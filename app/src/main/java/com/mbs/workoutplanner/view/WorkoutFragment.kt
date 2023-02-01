@@ -5,9 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentController
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mbs.workoutplanner.HomeAdapter
 import com.mbs.workoutplanner.MainViewModel
 import com.mbs.workoutplanner.R
@@ -44,11 +49,12 @@ class WorkoutFragment : Fragment() {
         viewModel.workoutsList.observe(viewLifecycleOwner) {
             adapter.updateList(it)
         }
+        handleFab()
     }
 
     override fun onResume() {
         super.onResume()
-
+        viewModel.getAllWorkouts()
     }
 
     override fun onDestroyView() {
@@ -58,7 +64,7 @@ class WorkoutFragment : Fragment() {
 
     private fun handleFab() {
         binding.homeFab.setOnClickListener {
-            findNavController().navigate(R.id.action_workoutFragment_to_workoutCreationFragment)
+            TODO()
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.mbs.workoutplanner.repository
 
 import com.mbs.workoutplanner.dataBase.AppDataBase
+import com.mbs.workoutplanner.dataBase.WorkoutEntity
 import com.mbs.workoutplanner.models.WorkoutModel
 
 class WorkoutRepository(appDataBase: AppDataBase) : WorkoutInterface {
@@ -13,9 +14,12 @@ class WorkoutRepository(appDataBase: AppDataBase) : WorkoutInterface {
                 id = it.id,
                 title = it.title,
                 weekDay = it.weekDay,
-                numberOfExercise = it.numberOfExercise,
-                isCompleted = it.isCompleted
+                numberOfExercise = it.numberOfExercise
             )
         }
+    }
+
+    override suspend fun insertWorkout(workout: WorkoutEntity) {
+        dao.insertWorkout(workout)
     }
 }

@@ -36,14 +36,6 @@
         android:hint="number of exercises"
         android:inputType="number"
         />
-    <EditText
-        android:id="@+id/is_completed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey"
-        android:hint="is completed? 0 or 1+"
-        android:inputType="number"
-        />
     <Button
         android:id="@+id/submit_button"
         android:layout_width="wrap_content"
