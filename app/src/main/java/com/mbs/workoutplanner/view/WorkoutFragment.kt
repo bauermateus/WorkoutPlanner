@@ -64,7 +64,9 @@ class WorkoutFragment : Fragment() {
 
     private fun handleFab() {
         binding.homeFab.setOnClickListener {
-            TODO()
+            findNavController().navigate(
+                R.id.action_workoutFragment_to_workoutCreationActivity
+            )
         }
     }
 }

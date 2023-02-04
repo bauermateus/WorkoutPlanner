@@ -15,6 +15,9 @@
         android:theme="@style/Theme.WorkoutPlanner"
         tools:targetApi="31">
         <activity
+            android:name=".view.WorkoutCreationActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -10,8 +10,8 @@
         android:label="fragment_workout"
         tools:layout="@layout/fragment_workout" >
         <action
-            android:id="@+id/action_workoutFragment_to_workoutCreationFragment"
-            app:destination="@id/workoutCreationFragment" />
+            android:id="@+id/action_workoutFragment_to_workoutCreationActivity"
+            app:destination="@id/workoutCreationActivity" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -23,9 +23,8 @@
         android:name="com.mbs.workoutplanner.view.CalculateFragment"
         android:label="fragment_calculate"
         tools:layout="@layout/fragment_calculate" />
-    <fragment
-        android:id="@+id/workoutCreationFragment"
-        android:name="com.mbs.workoutplanner.WorkoutCreationFragment"
-        android:label="fragment_workout_creation"
-        tools:layout="@layout/fragment_workout_creation" />
+    <activity
+        android:id="@+id/workoutCreationActivity"
+        android:name="com.mbs.workoutplanner.view.WorkoutCreationActivity"
+        android:label="WorkoutCreationActivity" />
 </navigation>
