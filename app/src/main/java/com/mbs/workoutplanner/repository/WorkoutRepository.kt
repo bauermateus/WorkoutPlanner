@@ -3,8 +3,9 @@ package com.mbs.workoutplanner.repository
 import com.mbs.workoutplanner.dataBase.AppDataBase
 import com.mbs.workoutplanner.dataBase.WorkoutEntity
 import com.mbs.workoutplanner.models.WorkoutModel
+import javax.inject.Inject
 
-class WorkoutRepository(appDataBase: AppDataBase) : WorkoutInterface {
+class WorkoutRepository @Inject constructor(appDataBase: AppDataBase) : WorkoutInterface {
 
     private val dao = appDataBase.workoutDao()
 
