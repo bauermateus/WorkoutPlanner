@@ -5,4 +5,14 @@
     <string name="home_fab_description">add new workout</string>
     <string name="workout_creation_activity_top_title">Construtor de Treino</string>
     <string name="spinner_content_description">dia da semana</string>
+    <string name="calculadora_de_gordura_corporal">Calculadora de gordura corporal</string>
+    <string name="homem">Homem</string>
+    <string name="mulher">Mulher</string>
+    <string name="calcular">Calcular!</string>
+    <string name="calculadora_de_imc">Calculadora de IMC</string>
+    <string name="abrir">Abrir!</string>
+    <string name="digite_seu_peso">Digite seu peso</string>
+    <string name="digite_sua_altura">Digite sua altura</string>
+    <string name="peso_obrigatorio_erro">Peso é obrigatório</string>
+    <string name="altura_obrigatório_erro">Altura é obrigatório</string>
 </resources>

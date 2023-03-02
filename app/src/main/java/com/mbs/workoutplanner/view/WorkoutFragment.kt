@@ -5,32 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentController
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mbs.workoutplanner.HomeAdapter
 import com.mbs.workoutplanner.MainViewModel
 import com.mbs.workoutplanner.R
-import com.mbs.workoutplanner.dataBase.AppDataBase
 import com.mbs.workoutplanner.databinding.FragmentWorkoutBinding
-import com.mbs.workoutplanner.repository.WorkoutRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutFragment : Fragment() {
-
     private var _binding: FragmentWorkoutBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by activityViewModels {
-        MainViewModel.Factory(WorkoutRepository(AppDataBase.getInstance(requireContext())))
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,6 +38,7 @@ class WorkoutFragment : Fragment() {
             adapter.updateList(it)
         }
         handleFab()
+
     }
 
     override fun onResume() {

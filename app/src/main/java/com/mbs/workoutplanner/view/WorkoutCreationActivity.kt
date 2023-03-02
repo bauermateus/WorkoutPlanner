@@ -9,17 +9,18 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.mbs.workoutplanner.MainViewModel
 import com.mbs.workoutplanner.dataBase.AppDataBase
 import com.mbs.workoutplanner.databinding.ActivityWorkoutCreationBinding
 import com.mbs.workoutplanner.repository.WorkoutRepository
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class WorkoutCreationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityWorkoutCreationBinding
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModel.Factory(WorkoutRepository(AppDataBase.getInstance(applicationContext)))
-    }
+    val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

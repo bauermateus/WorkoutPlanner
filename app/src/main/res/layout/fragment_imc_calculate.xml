@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ImcCalculateFragment"
+    android:padding="16dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titulo_imc_calculadora_fragment"
+        style="@style/Theme.WorkoutPlanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/calculadora_de_imc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="32dp"
+        android:gravity="center"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/peso_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:suffixText="KG"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo_imc_calculadora_fragment">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/peso_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/digite_seu_peso"
+            android:inputType="number"
+            android:maxLength="3"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/altura_input_layout"
+        android:layout_width="0dp"
+        app:suffixText="CM"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/peso_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/altura_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/digite_sua_altura"
+            android:inputType="number"
+            android:maxLength="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calculate_button"
+        style="@style/Widget.Material3.Button"
+        android:backgroundTint="@color/seed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="18dp"
+        android:text="@string/calcular"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/altura_input_layout" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

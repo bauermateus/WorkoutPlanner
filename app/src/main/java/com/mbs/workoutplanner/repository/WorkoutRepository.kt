@@ -1,13 +1,12 @@
 package com.mbs.workoutplanner.repository
 
 import com.mbs.workoutplanner.dataBase.AppDataBase
+import com.mbs.workoutplanner.dataBase.WorkoutDao
 import com.mbs.workoutplanner.dataBase.WorkoutEntity
 import com.mbs.workoutplanner.models.WorkoutModel
 import javax.inject.Inject
 
-class WorkoutRepository @Inject constructor(appDataBase: AppDataBase) : WorkoutInterface {
-
-    private val dao = appDataBase.workoutDao()
+class WorkoutRepository @Inject constructor(private val dao: WorkoutDao) : WorkoutInterface {
 
     override suspend fun fetchWorkouts(): List<WorkoutModel> {
         return dao.fetchAllWorkouts().map {

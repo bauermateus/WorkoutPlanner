@@ -18,6 +18,8 @@ object RoomModule {
     fun provideRoomDatabase(application: Application): AppDataBase {
         return AppDataBase.getInstance(application)
     }
+    @Provides
+    @Singleton
     fun provideHabitDao(dataBase: AppDataBase): WorkoutDao {
         return dataBase.workoutDao()
     }

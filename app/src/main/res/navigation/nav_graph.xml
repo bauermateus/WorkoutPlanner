@@ -22,9 +22,18 @@
         android:id="@+id/calculateFragment"
         android:name="com.mbs.workoutplanner.view.CalculateFragment"
         android:label="fragment_calculate"
-        tools:layout="@layout/fragment_calculate" />
+        tools:layout="@layout/fragment_calculate" >
+        <action
+            android:id="@+id/action_calculateFragment_to_measuresActivity"
+            app:destination="@id/measuresActivity" />
+    </fragment>
     <activity
         android:id="@+id/workoutCreationActivity"
         android:name="com.mbs.workoutplanner.view.WorkoutCreationActivity"
         android:label="WorkoutCreationActivity" />
+    <activity
+        android:id="@+id/measuresActivity"
+        android:name="com.mbs.workoutplanner.view.MeasuresActivity"
+        android:label="activity_measures"
+        tools:layout="@layout/activity_measures" />
 </navigation>
