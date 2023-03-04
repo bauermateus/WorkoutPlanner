@@ -15,4 +15,15 @@
     <string name="digite_sua_altura">Digite sua altura</string>
     <string name="peso_obrigatorio_erro">Peso é obrigatório</string>
     <string name="altura_obrigatório_erro">Altura é obrigatório</string>
+    <string name="seu_imc_prefixo">Seu IMC é:</string>
+    <string name="segundo_a_oms_seu_imc_est">Segundo a OMS, seu IMC está:</string>
+    <string name="under_weight">Abaixo do peso</string>
+    <string name="normal_weight">Peso normal</string>
+    <string name="overweight">Sobrepeso</string>
+    <string name="obesity_I">Obesidade grau 1</string>
+    <string name="obesity_II">Obesidade grau 2</string>
+    <string name="obesity_III">Obesidade grau 3</string>
+    <string name="ops_error_ocurred">Ops, algum erro ocorreu!</string>
+    <string name="tool_explain">Essa ferramenta dá apenas uma estimativa, e apesar de na maioria das vezes ter resultados muito fiéis a realidade, não substitui avaliação física.</string>
+    <string name="se_all_measures">Ver todas as Medidas</string>
 </resources>

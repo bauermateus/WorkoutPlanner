@@ -67,4 +67,10 @@
         <item name="colorOnPrimary">@color/white</item>
     </style>
 
+    <style name="ShapeAppearanceOverlay.WorkoutPlanner.Button.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
 </resources>

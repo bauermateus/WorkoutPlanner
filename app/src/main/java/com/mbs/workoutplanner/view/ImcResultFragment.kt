@@ -5,56 +5,104 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
+import com.mbs.workoutplanner.MeasuresViewModel
 import com.mbs.workoutplanner.R
+import com.mbs.workoutplanner.databinding.FragmentImcResultBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ImcResultFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class ImcResultFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentImcResultBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: MeasuresViewModel by activityViewModels()
+    private var resultado: Float = 0.0f
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        _binding = FragmentImcResultBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setObserver()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun setObserver() {
+        viewModel.imcResult.observe(viewLifecycleOwner){ data ->
+            resultado = data
+            handleImcResult()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_imc_result, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ImcResultFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ImcResultFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun handleImcResult() {
+        binding.imcValue.text = resultado.toString()
+        when {
+            resultado in 0.0..18.4 -> {
+                binding.imcQualidade.text = getString(R.string.under_weight)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blur_yellow
+                    )
+                )
             }
+            resultado in 18.5..24.9 -> {
+                binding.imcQualidade.text = getString(R.string.normal_weight)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.green
+                    )
+                )
+            }
+            resultado in 25.0..29.9 -> {
+                binding.imcQualidade.text = getString(R.string.overweight)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blur_yellow
+                    )
+                )
+            }
+            resultado in 30.0..34.9 -> {
+                binding.imcQualidade.text = getString(R.string.obesity_I)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blur_yellow
+                    )
+                )
+            }
+            resultado in 35.0..39.9 -> {
+                binding.imcQualidade.text = getString(R.string.obesity_II)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blur_red
+                    )
+                )
+            }
+            resultado > 40.0 -> {
+                binding.imcQualidade.text = getString(R.string.obesity_III)
+                binding.imcQualidade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.blur_red
+                    )
+                )
+            }
+            else -> binding.imcQualidade.text = getString(R.string.ops_error_ocurred)
+        }
     }
 }

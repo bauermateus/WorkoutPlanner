@@ -4,6 +4,10 @@
     <color name="light_blue">#5472d3</color>
     <color name="dark_blue">#002171</color>
 
+    <color name="green">#009454</color>
+    <color name="blur_yellow">#E48A2A</color>
+    <color name="blur_red">#E42A2A</color>
+
     <!-- Day colors -->
     <color name="white">#FFFFFFFF</color>
     <color name="light_grey">#e0e0e0</color>

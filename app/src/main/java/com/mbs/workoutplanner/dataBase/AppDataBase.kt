@@ -24,6 +24,6 @@ abstract class AppDataBase: RoomDatabase() {
             }
             return instance!!
         }
-        private const val DATABASE_NAME = "app-database.db"
+        private const val DATABASE_NAME = "workout-database.db"
     }
 }

@@ -23,12 +23,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/dark_blue"
+        app:tint="@color/white"
         android:layout_margin="16dp"
         android:elevation="10dp"
-        android:backgroundTint="@color/dark_blue"
         android:src="@drawable/ic_baseline_add_24"
-        android:contentDescription="@string/home_fab_description"
-        android:clickable="true"
-        android:focusable="true" />
+        android:contentDescription="@string/home_fab_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

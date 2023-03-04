@@ -1,14 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.BfCalculateFragment">
+    tools:context=".view.BfCalculateFragment"
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/titulo_imc_calculadora_fragment"
+        style="@style/Theme.WorkoutPlanner"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="bf frag" />
+        android:layout_height="wrap_content"
+        android:text="Calculadora de percentual de gordura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="48dp"
+        android:gravity="center"/>
 
-</FrameLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/pescoco_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:suffixText="cm"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo_imc_calculadora_fragment">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pescoco_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Circunferência do pescoço"
+            android:inputType="number"
+            android:maxLength="2"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/altura_input_layout"
+        android:layout_width="0dp"
+        app:suffixText="cm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pescoco_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/altura_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Altura"
+            android:inputType="number"
+            android:maxLength="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/cintura_input_layout"
+        android:layout_width="0dp"
+        app:suffixText="cm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/altura_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cintura_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Circunferência abdominal"
+            android:inputType="number"
+            android:maxLength="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Theme.WorkoutPlanner"
+        android:id="@+id/quadril_input_layout"
+        android:layout_width="0dp"
+        app:suffixText="cm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cintura_input_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/quadril_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Circunferência do quadril"
+            android:inputType="number"
+            android:maxLength="3" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calculate_button"
+        style="@style/Widget.Material3.Button"
+        android:backgroundTint="@color/seed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="18dp"
+        android:text="@string/calcular"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quadril_input_layout" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

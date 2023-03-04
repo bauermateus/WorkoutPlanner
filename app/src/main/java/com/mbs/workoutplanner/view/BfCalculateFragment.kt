@@ -5,56 +5,102 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.activityViewModels
+import com.google.android.material.snackbar.Snackbar
+import com.mbs.workoutplanner.MeasuresViewModel
 import com.mbs.workoutplanner.R
+import com.mbs.workoutplanner.databinding.FragmentBfCalculateBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BfCalculateFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class BfCalculateFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentBfCalculateBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel: MeasuresViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bf_calculate, container, false)
+    ): View {
+        _binding = FragmentBfCalculateBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BfCalculateFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BfCalculateFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        handleGenderAndCalculate()
+    }
+
+    private fun handleGenderAndCalculate() {
+        viewModel.gender.observe(viewLifecycleOwner) { gender ->
+
+            when (gender) {
+                0 -> {
+                    binding.calculateButton.setOnClickListener {
+                        when {
+                            binding.pescocoEdit.text.isNullOrBlank() -> {
+                                binding.pescocoInputLayout.error = "Campo obrigatório."
+                            }
+                            binding.alturaEdit.text.isNullOrBlank() -> {
+                                binding.alturaInputLayout.error = "Campo obrigatório."
+                            }
+                            binding.cinturaEdit.text.isNullOrBlank() -> {
+                                binding.cinturaInputLayout.error = "Campo obrigatório."
+                            }
+                            binding.quadrilEdit.text.isNullOrBlank() -> {
+                                binding.quadrilInputLayout.error = "Campo obrigatório."
+                            }
+                            else -> {
+                                viewModel.calculateWomenBf(
+                                    binding.cinturaEdit.text.toString().toFloat(),
+                                    binding.quadrilEdit.text.toString().toFloat(),
+                                    binding.pescocoEdit.text.toString().toFloat(),
+                                    binding.alturaEdit.text.toString().toFloat(),
+                                )
+                                requireActivity().supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragment_container, BfResultFragment())
+                                    .addToBackStack(null)
+                                    .commit()
+                            }
+                        }
+                    }
+                }
+                1 -> {
+                    binding.quadrilInputLayout.visibility = View.GONE
+                    val layout =
+                        binding.calculateButton.layoutParams as ConstraintLayout.LayoutParams
+                    layout.topToBottom = R.id.cintura_input_layout
+                    binding.calculateButton.setOnClickListener {
+                        when {
+                            binding.pescocoEdit.text.isNullOrBlank() -> {
+                                binding.pescocoInputLayout.error = "Campo obrigatório."
+                            }
+                            binding.alturaEdit.text.isNullOrBlank() -> {
+                                binding.alturaInputLayout.error = "Campo obrigatório."
+                            }
+                            binding.cinturaEdit.text.isNullOrBlank() -> {
+                                binding.cinturaInputLayout.error = "Campo obrigatório."
+                            }
+                            else -> {
+                                viewModel.calculateMenBf(
+                                    binding.cinturaEdit.text.toString().toFloat(),
+                                    binding.pescocoEdit.text.toString().toFloat(),
+                                    binding.alturaEdit.text.toString().toFloat(),
+                                )
+                                requireActivity().supportFragmentManager.beginTransaction()
+                                    .replace(R.id.fragment_container, BfResultFragment())
+                                    .addToBackStack(null)
+                                    .commit()
+                            }
+                        }
+                    }
+                }
+                else -> {
+                    Snackbar.make(binding.root, "Um erro ocorreu.", Snackbar.LENGTH_SHORT).show()
                 }
             }
+        }
     }
 }
