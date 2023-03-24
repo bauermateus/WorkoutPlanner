@@ -7,6 +7,8 @@ import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.children
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.firebase.ui.auth.AuthMethodPickerLayout
@@ -45,6 +47,9 @@ class MainActivity : AppCompatActivity() {
             window.navigationBarDividerColor = ContextCompat.getColor(this, R.color.dark_blue)
             window.navigationBarColor = ContextCompat.getColor(this, R.color.seed)
         }
+        binding.root.setOnClickListener {
+            auth.signOut()
+        }
 
     }
 
@@ -76,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         val response = result.idpResponse
-        if (FirebaseAuth.getInstance().currentUser != null) {
+        if (result.resultCode == RESULT_OK) {
             user = FirebaseAuth.getInstance().currentUser
             // ...
         } else {

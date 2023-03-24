@@ -7,6 +7,7 @@
     <color name="green">#009454</color>
     <color name="blur_yellow">#E48A2A</color>
     <color name="blur_red">#E42A2A</color>
+    <color name="light_red">#CC4F4F</color>
 
     <!-- Day colors -->
     <color name="white">#FFFFFFFF</color>

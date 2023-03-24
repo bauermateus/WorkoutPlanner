@@ -21,6 +21,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.mbs.workoutplanner.UserViewModel
 import com.mbs.workoutplanner.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +65,6 @@ class ProfileFragment : Fragment() {
                     .into(binding.profilePic)
             }
         }
-
         binding.addProfilePic.setOnClickListener { openImagePicker() }
     }
 
