@@ -28,7 +28,10 @@ class ImcCalculateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        handleInputsAndOpenResultFragment()
+        //handleInputsAndOpenResultFragment()
+        binding.calculateButton.setOnClickListener {
+            handleInputsAndOpenResultFragment()
+        }
     }
 
     override fun onDestroyView() {

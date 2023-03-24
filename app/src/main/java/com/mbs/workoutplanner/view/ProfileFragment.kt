@@ -5,14 +5,10 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +20,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.mbs.workoutplanner.UserViewModel
 import com.mbs.workoutplanner.databinding.FragmentProfileBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +42,6 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getPhotoFromDB()
     }
 
     override fun onCreateView(
@@ -53,6 +49,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        viewModel.getPhotoFromDB()
         return binding.root
     }
 
@@ -60,8 +57,9 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.userPhoto.observe(viewLifecycleOwner) { byteArrayPhoto ->
             if (byteArrayPhoto != null) {
-                val bitmap = BitmapFactory.decodeByteArray(byteArrayPhoto, 0, byteArrayPhoto.size)
-                binding.profilePic.setImageBitmap(bitmap)
+                Glide.with(this)
+                    .load(byteArrayPhoto)
+                    .into(binding.profilePic)
             }
         }
 
@@ -150,53 +148,38 @@ class ProfileFragment : Fragment() {
     private val activityResultContract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val data: Intent? = result.data
-                if (data?.data != null) {
-                    val uri = data.data
-                    if (uri != null) {
-                        val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                            val source =
-                                ImageDecoder.createSource(requireContext().contentResolver, uri)
-                            ImageDecoder.decodeBitmap(source)
-                        } else {
-                            MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
-                        }
+                // A imagem foi selecionada pela galeria
+                val uri = result.data?.data
+                if (uri != null) {
+                    binding.profilePic.setImageURI(uri)
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        val bitmap = Glide.with(this@ProfileFragment)
+                            .asBitmap()
+                            .load(uri)
+                            .submit()
+                            .get()
                         val stream = ByteArrayOutputStream()
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, stream)
                         val byteArray = stream.toByteArray()
-                        lifecycleScope.launch(Dispatchers.IO) {
-                            viewModel.savePhotoToDB(byteArray)
-                        }
-                        binding.profilePic.setImageURI(data.data)
+                        viewModel.savePhotoToDB(byteArray)
                     }
                 } else {
                     // A imagem foi capturada pela câmera
 
-                    lateinit var bitmap: Bitmap
-                    val path = currentPhotoPath
-                    try {
-                        bitmap = BitmapFactory.decodeFile(path)
-                    } catch (e: OutOfMemoryError) {
-                        try {
-                            val options = BitmapFactory.Options()
-                            options.inSampleSize = 2
-                            bitmap = BitmapFactory.decodeFile(path, options)
-                        } catch (e: Exception) {
-                            Log.e("erro", e.message.toString())
-                        }
-                    } finally {
-                        val stream = ByteArrayOutputStream()
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-                        file = stream.toByteArray()
-                    }
-
                     lifecycleScope.launch(Dispatchers.IO) {
-                        file?.let { byteArray ->
-                            viewModel.savePhotoToDB(byteArray)
+                        val bitmap = Glide.with(this@ProfileFragment)
+                            .asBitmap()
+                            .load(currentPhotoPath)
+                            .submit()
+                            .get()
+                        val stream = ByteArrayOutputStream()
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, stream)
+                        val byteArray = stream.toByteArray()
+                        viewModel.savePhotoToDB(byteArray)
+                        withContext(Dispatchers.Main) {
+                            binding.profilePic.setImageBitmap(bitmap)
                         }
                     }
-                    val tempImage = BitmapFactory.decodeFile(path)
-                    binding.profilePic.setImageBitmap(tempImage)
                 }
             }
         }
@@ -212,7 +195,10 @@ class ProfileFragment : Fragment() {
                     }
                     options[item] == "Escolher da galeria" -> {
                         val pickPhoto =
-                            Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                            Intent(
+                                Intent.ACTION_PICK,
+                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                            )
                         activityResultContract.launch(pickPhoto)
                     }
                     options[item] == "Cancelar" -> {
