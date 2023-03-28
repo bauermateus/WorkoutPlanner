@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "979830999139",
-    "project_id": "workout-planner-89110",
-    "storage_bucket": "workout-planner-89110.appspot.com"
+    "project_number": "725576717543",
+    "project_id": "workout-planner1",
+    "storage_bucket": "workout-planner1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:979830999139:android:8b8baf02961062bd1c5056",
+        "mobilesdk_app_id": "1:725576717543:android:031579c2f6ff659fd63e42",
         "android_client_info": {
           "package_name": "com.mbs.workoutplanner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "979830999139-pc8sru7r7r8ihkur4fom0vi091slmnpl.apps.googleusercontent.com",
+          "client_id": "725576717543-g42oco6aio9u7kl1h6abgudf3o5d6lb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mbs.workoutplanner",
+            "certificate_hash": "25f17cce2c77b5e0d95dfc9995b41732c6f57f18"
+          }
+        },
+        {
+          "client_id": "725576717543-2urui64ahf480pc6bcorvi7fsa7049l9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAAHJWAwrNrc7djKf1gdMO6hXZPHDbiRXo"
+          "current_key": "AIzaSyCw_GwKML3QL6SHu1EfJ2VeL3CogyuJMOA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "979830999139-pc8sru7r7r8ihkur4fom0vi091slmnpl.apps.googleusercontent.com",
+              "client_id": "725576717543-2urui64ahf480pc6bcorvi7fsa7049l9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
