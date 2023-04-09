@@ -1,348 +1,368 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/white_black_daynight"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ProfileFragment">
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/top_profile_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-16dp"
-        android:contentDescription="top profile background"
-        android:src="@drawable/top_bcakground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:src="@drawable/ic_profile_placeholder"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintDimensionRatio="1:1"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_profile_pic"
-        style="@style/ShapeAppearanceOverlay.WorkoutPlanner.Button.Rounded"
-        android:layout_width="32dp"
-        android:layout_height="43dp"
-        android:layout_margin="4dp"
-        android:contentDescription="add profile picture"
-        android:elevation="10dp"
-        android:gravity="center"
-        app:icon="@drawable/baseline_add_24_black"
-        app:iconGravity="top"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_pic"
-        app:layout_constraintEnd_toEndOf="@+id/profile_pic"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.WorkoutPlanner.Button.Rounded"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Mateus"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/top_profile_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+    tools:context=".view.fragments.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/center_view"
-        style="@style/profile_background_tint_linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/linear_layout_background_profile"
-        android:elevation="10dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/edit_profile_card_view"
-            style="@style/grey_black_style"
+        <ImageView
+            android:id="@+id/top_profile_background"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/cardView2"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/center_view">
-
-            <ImageButton
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:background="@color/transparent"
-                android:contentDescription="edit profile"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:tint="@color/light_blue" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView2"
-            style="@style/grey_black_style"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="4dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toStartOf="@+id/cardView5"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/edit_profile_card_view"
-            app:layout_constraintTop_toTopOf="@+id/center_view">
-
-            <ImageButton
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:background="@color/transparent"
-                android:contentDescription="notifications"
-                android:src="@drawable/ic_baseline_notifications"
-                app:tint="@color/light_blue" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView5"
-            style="@style/grey_black_style"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="10dp"
+            android:layout_height="0dp"
+            android:contentDescription="top profile background"
+            android:src="@drawable/top_bcakground"
+            app:layout_constraintDimensionRatio="10:9.35"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/cardView2"
-            app:layout_constraintTop_toTopOf="@+id/center_view">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:background="@color/transparent"
-                android:contentDescription="settings"
-                android:src="@drawable/ic_baseline_settings_24"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_pic"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_profile_placeholder"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/add_profile_pic"
+            style="@style/ShapeAppearanceOverlay.WorkoutPlanner.Button.Rounded"
+            android:layout_width="32dp"
+            android:layout_height="43dp"
+            android:layout_margin="4dp"
+            android:contentDescription="add profile picture"
+            android:elevation="10dp"
+            android:gravity="center"
+            app:icon="@drawable/baseline_add_24_black"
+            app:iconGravity="top"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_pic"
+            app:layout_constraintEnd_toEndOf="@+id/profile_pic"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.WorkoutPlanner.Button.Rounded"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="username"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/top_profile_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/center_view"
+            style="@style/profile_background_tint_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="240dp"
+            android:layout_marginEnd="24dp"
+            android:paddingBottom="16dp"
+            android:background="@drawable/linear_layout_background_profile"
+            android:elevation="10dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/edit_profile_card_view"
+                style="@style/grey_black_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardView2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/center_view">
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:background="@color/transparent"
+                    android:contentDescription="edit profile"
+                    android:src="@drawable/ic_baseline_edit_24"
+                    app:tint="@color/light_blue" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView2"
+                style="@style/grey_black_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/cardView5"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/edit_profile_card_view"
+                app:layout_constraintTop_toTopOf="@+id/center_view">
+
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:background="@color/transparent"
+                    android:contentDescription="notifications"
+                    android:src="@drawable/ic_baseline_notifications"
+                    app:tint="@color/light_blue" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView5"
+                style="@style/grey_black_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toTopOf="@+id/center_view"
-                app:tint="@color/light_blue" />
-        </androidx.cardview.widget.CardView>
+                app:layout_constraintTop_toTopOf="@+id/center_view">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/modalidade"
-            android:textColor="@color/light_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Modalidade:"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/edit_profile_card_view"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="Musculação"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/modalidade"
-            app:layout_constraintStart_toEndOf="@id/modalidade"/>
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/first_viewline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/modalidade"/>
+                <ImageButton
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:background="@color/transparent"
+                    android:contentDescription="settings"
+                    android:src="@drawable/ic_baseline_settings_24"
+                    app:layout_constraintStart_toEndOf="@+id/cardView2"
+                    app:layout_constraintTop_toTopOf="@+id/center_view"
+                    app:tint="@color/light_blue" />
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/altura"
-            android:textColor="@color/light_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Altura:"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/first_viewline"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/altura_number"
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="174"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/altura"
-            app:layout_constraintStart_toEndOf="@id/altura"/>
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="cm"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/altura_number"
-            app:layout_constraintTop_toTopOf="@id/altura_number"/>
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/second_viewline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/altura"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/modalidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Modality:"
+                android:textColor="@color/light_blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edit_profile_card_view" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/peso"
-            android:textColor="@color/light_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Peso:"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/second_viewline"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/peso_number"
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="73"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/peso"
-            app:layout_constraintStart_toEndOf="@id/peso"/>
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="kg"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/peso_number"
-            app:layout_constraintTop_toTopOf="@id/peso_number"/>
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/third_viewline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/peso"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/bf"
-            android:textColor="@color/light_blue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Percentual de gordura:"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/third_viewline"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/bf_number"
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="12"
-            android:textSize="20sp"
-            app:layout_constraintTop_toTopOf="@id/bf"
-            app:layout_constraintStart_toEndOf="@id/bf"/>
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/secondary_text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
-            android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@id/bf_number"
-            app:layout_constraintTop_toTopOf="@id/bf_number"/>
-        <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/fourth_viewline"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/bf"/>
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Bodybuilding"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/modalidade"
+                app:layout_constraintTop_toTopOf="@id/modalidade" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/see_all_measures"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/se_all_measures"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp"
-            android:background="@drawable/button_profile_background"
-            android:padding="8dp"
-            android:elevation="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/fourth_viewline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/first_viewline"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/modalidade" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/logout_button"
-            style="@style/Theme.WorkoutPlanner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Desconectar"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:textSize="18sp"
-            android:background="@drawable/button_profile_background"
-            app:backgroundTint="@color/light_red"
-            android:padding="8dp"
-            android:elevation="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/see_all_measures"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/altura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Height:"
+                android:textColor="@color/light_blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_viewline" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/altura_number"
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="174"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/altura"
+                app:layout_constraintTop_toTopOf="@id/altura" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cm"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/altura_number"
+                app:layout_constraintTop_toTopOf="@id/altura_number" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/second_viewline"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/altura" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/peso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Weight:"
+                android:textColor="@color/light_blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/second_viewline" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/peso_number"
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="73"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/peso"
+                app:layout_constraintTop_toTopOf="@id/peso" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kg"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/peso_number"
+                app:layout_constraintTop_toTopOf="@id/peso_number" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/third_viewline"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/peso" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Body fat percentage:"
+                android:textColor="@color/light_blue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/third_viewline" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/bf_number"
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="12"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/bf"
+                app:layout_constraintTop_toTopOf="@id/bf" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/secondary_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="%"
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@id/bf_number"
+                app:layout_constraintTop_toTopOf="@id/bf_number" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/fourth_viewline"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bf" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/see_all_measures"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_profile_background"
+                android:elevation="10dp"
+                android:padding="8dp"
+                android:text="@string/se_all_measures"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fourth_viewline" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout_button"
+                style="@style/Theme.WorkoutPlanner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_profile_background"
+                android:elevation="10dp"
+                android:padding="8dp"
+                android:text="Sign out"
+                android:layout_marginBottom="8dp"
+                android:textSize="18sp"
+                app:backgroundTint="@color/light_red"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/see_all_measures" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

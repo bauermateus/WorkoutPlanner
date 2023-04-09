@@ -3,6 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activitys.MeasuresActivity"
-    android:id="@+id/fragment_container">
-</FrameLayout>
+    tools:context=".view.activitys.LoginActivity"
+    android:id="@+id/login_fragment_container"/>

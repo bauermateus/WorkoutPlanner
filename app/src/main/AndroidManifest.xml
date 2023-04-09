@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -13,12 +13,22 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/wp"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/wp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorkoutPlanner"
         tools:targetApi="31">
+        <activity
+            android:name=".view.activitys.LoginActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.mbs.workoutplanner.fileprovider"
@@ -30,19 +40,14 @@
         </provider>
 
         <activity
-            android:name=".view.MeasuresActivity"
+            android:name=".view.activitys.MeasuresActivity"
             android:exported="false" />
         <activity
-            android:name=".view.WorkoutCreationActivity"
+            android:name=".view.activitys.WorkoutCreationActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".view.activitys.MainActivity"
+            android:exported="false">
         </activity>
     </application>
 

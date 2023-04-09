@@ -18,6 +18,7 @@
     <color name="black">#FF000000</color>
     <color name="very_dark_grey">#212121</color>
     <color name="dark_grey">#484848</color>
+    <color name="text_grey">#757171</color>
 
     <!-- other -->
     <color name="transparent">#00FFFFFF</color>

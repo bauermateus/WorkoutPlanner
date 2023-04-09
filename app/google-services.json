@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "725576717543-g42oco6aio9u7kl1h6abgudf3o5d6lb1.apps.googleusercontent.com",
+          "client_id": "725576717543-dl7jdck81msqrpk40jsece7cec05q491.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.mbs.workoutplanner",
-            "certificate_hash": "25f17cce2c77b5e0d95dfc9995b41732c6f57f18"
+            "certificate_hash": "ed886f717c69d4bffc81c8415a0a64055ecd7b8a"
           }
         },
         {

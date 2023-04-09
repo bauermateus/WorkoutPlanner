@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.BfResultFragment">
+    tools:context=".view.fragments.BfResultFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/bf_title"

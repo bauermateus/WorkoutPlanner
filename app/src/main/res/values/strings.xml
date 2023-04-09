@@ -25,5 +25,17 @@
     <string name="obesity_III">Obesidade grau 3</string>
     <string name="ops_error_ocurred">Ops, algum erro ocorreu!</string>
     <string name="tool_explain">Essa ferramenta dá apenas uma estimativa, e apesar de na maioria das vezes ter resultados muito fiéis a realidade, não substitui avaliação física.</string>
-    <string name="se_all_measures">Ver todas as Medidas</string>
+    <string name="se_all_measures">See all measures</string>
+    <string name="app_icon_content_description">app icon</string>
+    <string name="google_sign_in_content_description">google_sign_in</string>
+    <string name="anonymous_icon_content_description">anonymous_icon</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>
