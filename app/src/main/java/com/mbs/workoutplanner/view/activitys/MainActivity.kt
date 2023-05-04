@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -21,13 +22,26 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    val userViewModel: UserViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
+    val bottomNavigationView: BottomNavigationView get() =  binding.bottomNavegationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setupBottomNavigationWithNavController()
+        setupBottomNavigationWithNavController(bottomNavigationView)
+        setupDividerColor()
+        userViewModel.getUserData()
+    }
+
+    private fun setupBottomNavigationWithNavController(bottomNavigationView: BottomNavigationView) {
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomNavigationView.setupWithNavController(navController)
+    }
+
+    private fun setupDividerColor() {
         val isDarkModeOn =
             this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         if (isDarkModeOn) {
@@ -39,13 +53,5 @@ class MainActivity : AppCompatActivity() {
             window.navigationBarDividerColor = ContextCompat.getColor(this, R.color.dark_blue)
             window.navigationBarColor = ContextCompat.getColor(this, R.color.seed)
         }
-    }
-
-    private fun setupBottomNavigationWithNavController() {
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(binding.fragmentContainerView.id) as NavHostFragment
-        val navController = navHostFragment.navController
-        val bottomNavigationView = binding.bottomNavegationView
-        bottomNavigationView.setupWithNavController(navController)
     }
 }

@@ -20,13 +20,18 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.get
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.mbs.workoutplanner.R
+import com.mbs.workoutplanner.application.Application_Constants
 import com.mbs.workoutplanner.view.viewmodels.UserViewModel
 import com.mbs.workoutplanner.databinding.FragmentProfileBinding
 import com.mbs.workoutplanner.view.activitys.LoginActivity
+import com.mbs.workoutplanner.view.activitys.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
@@ -42,7 +47,7 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: UserViewModel by activityViewModels()
+    private val userViewModel: UserViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,17 +64,19 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.addProfilePic.setOnClickListener { openImagePicker() }
-        binding.logoutButton.setOnClickListener {
-            Firebase.auth.signOut()
-            requireActivity().finish()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
+        binding.editProfileButton.setOnClickListener {
+            val dialog = EditProfileDialogFragment()
+            dialog.show(requireActivity().supportFragmentManager, Application_Constants.EDIT_PROFILE_DIALOG)
         }
-
+        setupLogoutButton()
+        registerObserver()
     }
 
     override fun onResume() {
         super.onResume()
+        userViewModel.getUserData()
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -83,7 +90,7 @@ class ProfileFragment : Fragment() {
                 startCamera()
             } else {
                 // A permissão foi negada, você pode exibir uma mensagem para o usuário ou solicitar novamente
-                Toast.makeText(requireContext(), "Permissão da câmera negada", Toast.LENGTH_SHORT)
+                Toast.makeText(requireContext(), "Camera permission denied", Toast.LENGTH_SHORT)
                     .show()
             }
         }
@@ -99,12 +106,12 @@ class ProfileFragment : Fragment() {
             startCamera()
         } else {
             AlertDialog.Builder(requireContext())
-                .setTitle("Permissão da câmera")
-                .setMessage("Necessário permissão da câmera para tirar fotos.")
+                .setTitle("Camera permission")
+                .setMessage("Camera permission required to take pictures.")
                 .setPositiveButton("OK") { _, _ ->
                     requestCameraPermission.launch(Manifest.permission.CAMERA)
                 }
-                .setNegativeButton("Cancelar", null)
+                .setNegativeButton("Cancel", null)
                 .create()
                 .show()
         }
@@ -145,7 +152,6 @@ class ProfileFragment : Fragment() {
             currentPhotoPath = path
         }
     }
-
     private val activityResultContract =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -185,15 +191,15 @@ class ProfileFragment : Fragment() {
         }
 
     private fun openImagePicker() {
-        val options = arrayOf<CharSequence>("Tirar foto", "Escolher da galeria", "Cancelar")
+        val options = arrayOf<CharSequence>("Take picture", "Choose from gallery", "Cancel")
         AlertDialog.Builder(requireContext())
-            .setTitle("Nova foto de perfil")
+            .setTitle("New profile picture")
             .setItems(options) { dialog, item ->
                 when {
-                    options[item] == "Tirar foto" -> {
+                    options[item] == "Take picture" -> {
                         checkCameraPermission()
                     }
-                    options[item] == "Escolher da galeria" -> {
+                    options[item] == "Choose from gallery" -> {
                         val pickPhoto =
                             Intent(
                                 Intent.ACTION_PICK,
@@ -201,11 +207,27 @@ class ProfileFragment : Fragment() {
                             )
                         activityResultContract.launch(pickPhoto)
                     }
-                    options[item] == "Cancelar" -> {
+                    options[item] == "Cancel" -> {
                         dialog.dismiss()
                     }
                 }
             }
             .show()
+    }
+    private fun registerObserver() {
+        userViewModel.userData.observe(viewLifecycleOwner) {
+            binding.username.text = it.name
+            binding.modalityValue.text = it.modality
+            binding.weightValue.text = it.weight.toString()
+            binding.heightValue.text = it.height.toString()
+            binding.bfValue.text = it.bf.toString()
+        }
+    }
+    private fun setupLogoutButton() {
+        binding.logoutButton.setOnClickListener {
+            Firebase.auth.signOut()
+            requireActivity().finish()
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
+        }
     }
 }

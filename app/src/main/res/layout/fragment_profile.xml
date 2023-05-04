@@ -79,7 +79,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/edit_profile_card_view"
+                android:id="@+id/edit_profile_cardview"
                 style="@style/grey_black_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -88,26 +88,45 @@
                 android:layout_marginEnd="4dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardView2"
+                app:layout_constraintEnd_toStartOf="@+id/notifications_cardview"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/center_view">
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:background="@color/transparent"
-                    android:contentDescription="edit profile"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    app:tint="@color/light_blue" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/edit_profile_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="edit profile"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        app:tint="@color/light_blue" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/secondary_text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit profile"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="8dp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView2"
+                android:id="@+id/notifications_cardview"
                 style="@style/grey_black_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -116,25 +135,44 @@
                 android:layout_marginEnd="4dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/cardView5"
+                app:layout_constraintEnd_toStartOf="@+id/settings_cardview"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/edit_profile_card_view"
+                app:layout_constraintStart_toEndOf="@+id/edit_profile_cardview"
                 app:layout_constraintTop_toTopOf="@+id/center_view">
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:background="@color/transparent"
-                    android:contentDescription="notifications"
-                    android:src="@drawable/ic_baseline_notifications"
-                    app:tint="@color/light_blue" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/notifications_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="notifications"
+                        android:src="@drawable/ic_baseline_notifications"
+                        app:tint="@color/light_blue" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/secondary_text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="8dp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView5"
+                android:id="@+id/settings_cardview"
                 style="@style/grey_black_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -145,24 +183,43 @@
                 app:cardElevation="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toEndOf="@+id/notifications_cardview"
                 app:layout_constraintTop_toTopOf="@+id/center_view">
 
-                <ImageButton
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    android:background="@color/transparent"
-                    android:contentDescription="settings"
-                    android:src="@drawable/ic_baseline_settings_24"
-                    app:layout_constraintStart_toEndOf="@+id/cardView2"
-                    app:layout_constraintTop_toTopOf="@+id/center_view"
-                    app:tint="@color/light_blue" />
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/settings_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="settings"
+                        android:src="@drawable/ic_baseline_settings_24"
+                        app:layout_constraintStart_toEndOf="@+id/notifications_cardview"
+                        app:layout_constraintTop_toTopOf="@+id/center_view"
+                        app:tint="@color/light_blue" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/secondary_text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Settings"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginBottom="8dp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/modalidade"
+                android:id="@+id/modality"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -172,17 +229,18 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/edit_profile_card_view" />
+                app:layout_constraintTop_toBottomOf="@id/edit_profile_cardview" />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/secondary_text_color"
+                android:id="@+id/modality_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Bodybuilding"
+                android:text="-"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/modalidade"
-                app:layout_constraintTop_toTopOf="@id/modalidade" />
+                app:layout_constraintStart_toEndOf="@id/modality"
+                app:layout_constraintTop_toTopOf="@id/modality" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/first_viewline"
@@ -193,10 +251,10 @@
                 android:layout_marginVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/modalidade" />
+                app:layout_constraintTop_toBottomOf="@id/modality" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/altura"
+                android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -209,24 +267,26 @@
                 app:layout_constraintTop_toBottomOf="@id/first_viewline" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/altura_number"
+                android:id="@+id/height_value"
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="174"
+                android:text="0"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/altura"
-                app:layout_constraintTop_toTopOf="@id/altura" />
+                app:layout_constraintStart_toEndOf="@id/height"
+                app:layout_constraintTop_toTopOf="@id/height" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
                 android:text="cm"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/altura_number"
-                app:layout_constraintTop_toTopOf="@id/altura_number" />
+                app:layout_constraintStart_toEndOf="@id/height_value"
+                app:layout_constraintTop_toTopOf="@id/height_value" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/second_viewline"
@@ -237,10 +297,10 @@
                 android:layout_marginVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/altura" />
+                app:layout_constraintTop_toBottomOf="@id/height" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/peso"
+                android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -253,24 +313,25 @@
                 app:layout_constraintTop_toBottomOf="@id/second_viewline" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/peso_number"
+                android:id="@+id/weight_value"
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="73"
+                android:text="0"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/peso"
-                app:layout_constraintTop_toTopOf="@id/peso" />
+                app:layout_constraintStart_toEndOf="@id/weight"
+                app:layout_constraintTop_toTopOf="@id/weight" />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="kg"
+                android:layout_marginStart="2dp"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/peso_number"
-                app:layout_constraintTop_toTopOf="@id/peso_number" />
+                app:layout_constraintStart_toEndOf="@id/weight_value"
+                app:layout_constraintTop_toTopOf="@id/weight_value" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/third_viewline"
@@ -281,7 +342,7 @@
                 android:layout_marginVertical="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/peso" />
+                app:layout_constraintTop_toBottomOf="@id/weight" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/bf"
@@ -297,24 +358,26 @@
                 app:layout_constraintTop_toBottomOf="@id/third_viewline" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/bf_number"
+                android:id="@+id/bf_value"
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="12"
+                android:text="-"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@id/bf"
                 app:layout_constraintTop_toTopOf="@id/bf" />
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView2"
                 style="@style/secondary_text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
                 android:text="%"
                 android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/bf_number"
-                app:layout_constraintTop_toTopOf="@id/bf_number" />
+                app:layout_constraintStart_toEndOf="@id/bf_value"
+                app:layout_constraintTop_toTopOf="@id/bf_value" />
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/fourth_viewline"

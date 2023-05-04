@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -13,11 +14,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mbs.workoutplanner.databinding.FragmentSignUpBinding
+import com.mbs.workoutplanner.models.UserDataModel
+import com.mbs.workoutplanner.view.viewmodels.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,8 +60,8 @@ class SignUpFragment : Fragment() {
                     if (email.text.toString().emailIsValid()) null else "Invalid email"
                 passwordInput.error = if (password.text.isNullOrBlank()) "Required field." else null
                 passwordInput.error = if (password.text.toString().length < 8) "Password should have at least 8 characters." else null
-                reenterPasswordInput.error =
-                    if (reenterPassword.text.isNullOrBlank()) "Required field." else null
+                reenterPasswordInput.error = if (reenterPassword.text.isNullOrBlank()) "Required field." else null
+                nameInput.error = if (name.text.isNullOrBlank()) "Required field." else null
                 heightInput.error = if (height.text.isNullOrBlank()) "Required field." else null
                 weightInput.error = if (weight.text.isNullOrBlank()) "Required field." else null
                 if (emailInput.error == null && passwordInput.error == null && reenterPasswordInput.error == null && heightInput.error == null && weightInput.error == null) {
@@ -71,6 +77,7 @@ class SignUpFragment : Fragment() {
                                         "Register Success, please log in",
                                         Snackbar.LENGTH_LONG
                                     ).show()
+                                    userViewModel.saveUser(UserDataModel(binding.name.text.toString(), "", binding.weight.text.toString().toDouble(), binding.height.text.toString().toLong(), 0.0))
                                     requireActivity().supportFragmentManager.popBackStack()
                                 } else {
                                     Snackbar.make(

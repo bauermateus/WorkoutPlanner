@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,13 +21,18 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mbs.workoutplanner.R
 import com.mbs.workoutplanner.databinding.FragmentSignInBinding
+import com.mbs.workoutplanner.models.UserDataModel
 import com.mbs.workoutplanner.view.activitys.MainActivity
+import com.mbs.workoutplanner.view.viewmodels.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
     private lateinit var googleSignInLauncher: ActivityResultLauncher<Intent>
+    private val userViewModel: UserViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,22 +59,27 @@ class SignInFragment : Fragment() {
 
     private fun setupSignInButton() {
         binding.loginButton.setOnClickListener {
-            auth.signInWithEmailAndPassword(
-                binding.email.text.toString(),
-                binding.password.text.toString()
-            )
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        startActivity(Intent(requireContext(), MainActivity::class.java))
-                        activity?.finish()
+            if (binding.email.text.toString().isNotBlank() &&
+                binding.password.text.toString().isNotBlank()
+            ) {
+                auth.signInWithEmailAndPassword(
+                    binding.email.text.toString(),
+                    binding.password.text.toString()
+                )
+                    .addOnSuccessListener {
+                            startActivity(Intent(requireContext(), MainActivity::class.java))
+                            activity?.finish()
+                    }.addOnFailureListener {
+                        Toast.makeText(
+                            requireContext(),
+                            it.cause.toString() + "   " + it.message.toString(),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
-                }.addOnFailureListener {
-                    Toast.makeText(
-                        requireContext(),
-                        it.cause.toString() + "   " + it.message.toString(),
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+            } else {
+                Toast.makeText(requireContext(), "Please fill all fields.", Toast.LENGTH_LONG).show()
+
+            }
         }
     }
 
@@ -105,8 +116,9 @@ class SignInFragment : Fragment() {
         val credentials = GoogleAuthProvider.getCredential(account.idToken, null)
         auth.signInWithCredential(credentials)
             .addOnCompleteListener {
+                userViewModel.saveUser(UserDataModel(auth.currentUser?.displayName ?: "", "", 0.0 , 0, 0.0))
                 startActivity(Intent(requireContext(), MainActivity::class.java))
-                activity?.finish()
+                requireActivity().finish()
             }
             .addOnFailureListener {
                 Log.e("google signin error", it.message.toString())

@@ -1,9 +1,8 @@
+
 package com.mbs.workoutplanner.di
 
-import com.mbs.workoutplanner.repository.UserInfoInterface
-import com.mbs.workoutplanner.repository.UserInfoRepository
-import com.mbs.workoutplanner.repository.WorkoutInterface
-import com.mbs.workoutplanner.repository.WorkoutRepository
+import com.mbs.workoutplanner.repository.UserDataInterface
+import com.mbs.workoutplanner.repository.UserDataRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,9 +15,6 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun provideWorkoutRepository(impl: WorkoutRepository): WorkoutInterface
+    abstract fun provideUserDataRepository(impl: UserDataRepository): UserDataInterface
 
-    @Binds
-    @Singleton
-    abstract fun provideUserInfoRepository(impl: UserInfoRepository): UserInfoInterface
 }
